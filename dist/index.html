@@ -1,0 +1,302 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDEO CONFERENCE</title>
+    <link rel="stylesheet" href="../resources/vendors/bootstrap/bootstrap-icons-1.8.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../resources/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/vendors/avatar.min.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <!-- link through the manifest json file -->
+    <link rel="manifest" href="../resources/js/pwa/pwa-js/pwa.webmanifest">
+    <!-- link through dynamic url on manifest jsonfile -->
+    <!--     <link rel="manifest" id="my-manifest-url">
+ -->
+    <!-- link through icons on image folder  -->
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-256x256.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-512x512.png" />
+
+    <!-- adding PWA meta tag theme color -->
+    <meta name="theme-color" content="#A312FC" />
+        <!-- adding jquery UI  -->
+        <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.css">
+        <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
+
+</head>
+
+<body>
+    <!-- Waiting room for guest users-->
+    <div id="load" class="text-center waiting-room" style="display: none">
+        <div class="offset-1 col-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 align-self-center">
+            <br /><br />
+          <!--  <h5 class="title">Meeting name - <span class="text-danger" id="meeting-name"></span></h5>
+            <p class="mb-2 lblHelpTxt" id="idmsg">Admin is yet to accept your request.</p>
+            <div class="iframeDiv"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>PARTICIPANTS</h5>
+                </div>
+                <div class="collapse multi-collapse show" id="collapse-paricipants">
+                    <div class="card-body ">
+                        <div class="text-start moderatorwaitingparticipants" id="listdisplayname"></div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Display all connected users in the conference -->
+  <!--  <div id="videos">
+        <div id="VisualMedia"></div>
+    </div>-->
+ <!-- Modified Display all connected users in the conference -->
+<div  class="container-fluid " id="videos">
+        <div class="row vh-100 align-items-end align-items-lg-center" >
+            <div class="col-12 offset-lg-9 col-lg-3 text-center text-lg-end ">
+                <div id="VisualMedia" class="me-3"></div> 
+            </div>
+         </div>
+    </div>
+
+
+
+    <!--  This is only for admin -->
+    <div id="Main" style="display: none"></div>
+
+    <!--  Fixed Bottom Control bar  -->
+    <div class="footer">
+        <i id="idAudio" data-bs-toggle="tooltip" data-bs-placement="top" title="Audio"
+            class="clsIcons bi bi-mic-fill m-1"></i>
+        <i id="idVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Video"
+            class="clsIcons bi bi-camera-video-fill m-1"></i>
+        <span>
+            <i style="display: none; font-size: 0.68rem;" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Mute all" id="muteall" class="clsIcons bi bi-mic-mute m-1"><br>
+                <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute all"
+                    id="muteall_1" class="bi bi-mic-mute">
+                    <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute all"
+                        id="muteall_2" class="bi bi-mic-mute"></i>
+                </i>
+            </i>
+        </span>
+        <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute all" id="muteall"
+            class="clsIcons bi bi-volume-mute-fill m-1"></i>
+        <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Record" id="record"
+            class="clsIcons bi bi-record-circle-fill m-1"></i>
+        <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="switch camera"
+            id="switchcamera" class="clsIcons bi bi-arrow-repeat m-1"></i>
+        <i id="idSettings" data-bs-toggle="modal" data-bs-target="#idMediaCaptureSettingsModal"
+            class="clsIcons bi bi-gear-fill m-1"></i>
+        <span>
+            <i id="idChat" data-bs-toggle="modal" data-bs-target="#modalChat" class="clsIcons bi bi-chat-fill m-1"></i>
+            <i id="chatNotification" class="notification d-none bi bi-exclamation-circle-fill"></i>
+        </span>
+        <span>
+            <i id="idParticipants" style="display: none" data-bs-toggle="modal" data-bs-target="#modalParticipants"
+                class="clsIcons bi bi-people-fill m-1"></i>
+            <i id="participantsNotification" class="notification d-none bi bi-exclamation-circle-fill"></i>
+        </span>
+        <a id="idEndCall"><i  title="End call" class="clsIcons bi bi-telephone-x-fill m-1"></i></a>
+
+    </div>
+
+    <!-- Display name Modal popup-->
+    <div class="modal fade" id="iddisplaynamemodal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center">Display name</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="idconferencename">Conference name:</label>
+                        <input type="text" class="form-control" placeholder="Enter Conference name"
+                            id="idconferencename">
+                    </div>
+                    <div class="mb-3">
+                        <label for="iddisplayname">Display name:</label>
+                        <input type="text" class="form-control" placeholder="Enter your name" id="iddisplayname"
+                            required>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="form-check-label"><input type="checkbox" id="idisAdmin"> Are you admin ?</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="idJoin">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Media Capture settings Modal poup  -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="idMediaCaptureSettingsModal" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Settings</h4>
+                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"></span></i>
+                </div>
+                <div class="modal-body">
+                    <h5>Preview</h5>
+                    <div class="form-group text-center">
+                        <video playsinline id="preview" class="mirroron" width="50%" height="auto" autoplay
+                            loop></video>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-2"><label>Camera</label></div>
+                        <div class="col-10"><select class="form-select" id="videoinput"></select></div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2"><label>Mic</label></div>
+                        <div class="col-10"><select class="form-select" id="audioinput"></select></div>
+                    </div>
+                    <div class="row p-2 d-none">
+                        <div class="col-2"><label>Speakers</label></div>
+                        <div class="col-10"><select class="form-select" id="audiooutput"></select></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CHAT Modal -->
+    <div class="modal right fade" id="modalChat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></i>
+                    <h4 class="modal-title" id="myModalLabel2">Chat</h4>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="ChatBox">
+                        <ul id="messages" class="text-end"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="input" autocomplete="off"
+                            placeholder="Enter message" required aria-label="Enter message"
+                            aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" id="sendmessage">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+
+    <!-- PARTICIPANTS Modal -->
+    <div class="modal  fade" id="modalParticipants" tabindex="-1" role="dialog"
+        aria-labelledby="modalParticipants">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button> -->
+                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></i>
+                    <h4 class="modal-title">Participants</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="Waiting">
+                        <div class="card-body ">
+                            <div id="acceptdeclineid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+
+    <!-- Start Default scripts -->
+   <script src="../resources/vendors/jquery/jquery-3.6.0.min.js"></script> 
+    <script src="../resources/vendors/jquery/jquery-dateformat.js"></script>
+    <script src="../resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../resources/vendors/notiflix-aio-2.7.0.min.js"></script>
+    <script src="../resources/vendors/adapter-latest.js"></script>
+   <!-- <script src="/socket.io/socket.io.js"></script>-->
+    <script src="../resources/vendors/socket/socket.io.js"></script>
+    <!-- Custom scripts -->
+    <script src="../resources/js/Animation/Pen.js"></script>
+    <script src="../resources/js/UI/commonfunctions.js"></script>
+   <!-- <script src="../resources/js/UI/video-layout.js"></script> -->
+    <!-- Custom scripts as Module -->
+    <script src="./main.js" type="module"></script>
+
+    <!-- adding the pwa.js file in script tag -->
+    <script src="../resources/js/pwa/pwa-js/pwa.js"></script>
+
+   <!-- adding jquery UI  -->
+<script src="../resources/vendors/jquery/jquery_UI/jquery-ui.js"></script>
+ <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
+<script src="../resources/vendors/jquery/jquery_UI/jquery.ui.touch-punch.min.js"></script>
+
+<!--cordova-->
+
+<script>
+  //  For browser videolayout
+        var useragent = navigator.userAgent;   
+        /* if(useragent.match(/chrome|chromium|crios/i)){
+                document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }else if(useragent.match(/firefox|fxios/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }  else if(useragent.match(/safari/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }else if(useragent.match(/opr\//i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           } else if(useragent.match(/edg/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }*/ 
+    
+                                                                                                                                                                                          
+  // For use within normal web clients                                                                                                                                                             
+var isIphone = navigator.userAgent.match(/iPhone|iPad|iPod/i) != null;                                                                                                                             
+var realdevice;                                                                                                                                                                                    
+// For use within iphone developer UIWebView                                                                                                                                                        
+                                                                                                                                                                
+var isIphone = /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent);                                                                   
+if(isIphone){                                                                                                                                                                                        
+    
+    document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                                            
+   document.write('<script type="text/javascript" src="../resources/js/UI/cordova/ios/www/www/cordova.js"><\/script>');
+    // For ios Layout
+    //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');      
+                                                                                
+}else if(realdevice){  
+   document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                              
+  document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/client_cordova/client_WWFolder/www/cordova.js"><\/script>');
+   // For ios Layout
+   // document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');   
+                                                     
+}              
+
+                                                                                                                                                                                                  
+//   Android                                                                                                                                                                                         
+  var isAndroid = navigator.userAgent.match(/Android/i) != null;                                                                                                                                   
+var isAndroid = /Android/i.test(useragent) || /Android/i.test(useragent) || /Android/i.test(useragent);                                                                                              
+if(isAndroid){                                                                                                                                                                                       
+                                                                                                                                                                                                   
+  document.write('<script type="text/javascript" src="../resources/js/UI/cordova/android/Event_listener.js"><\/script> <script type="text/javascript" src="../resources/js/UI/cordova/android/platform_www/cordova.js" ><\/script>');
+  //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');
+}                                                                                                                                                                                                    
+                                                                                                                                                                                                   
+ </script> 
+
+
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+
+#MainCanvas {
+    width: 100%;
+    height: auto;
+}
+
+.maincontrolbar {
+    text-align: center;
+}
+
+.list {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.initials {
+    font-size: calc(var(--avatar-size) / 2);
+    /* 50% of parent */
+    line-height: 1;
+    position: relative;
+    top: calc(var(--avatar-size) / 4);
+    /* 25% of parent */
+}
+
+.circle {
+    background-color: #ccc;
+    border-radius: 50%;
+    height: var(--avatar-size);
+    text-align: center;
+    width: var(--avatar-size);
+}
+
+.root {
+    --avatar-size: 3rem;
+    /* change this value anything, e.g., 100px, 10rem, etc. */
+}
+
+.display {
+    display: inline-block;
+}
+
+.card-text {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.red-color {
+    color: red;
+}
+
+.user-name {
+    border-radius: 5px;
+    padding: 0ch;
+    background-color: black;
+    color: white;
+}
+
+
+/** CHAT */
+#form {
+    background: rgb(13 110 253);
+    padding: 0.25rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#messages>li {
+    padding: 0.5rem 1rem;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: calc(100vh - 200px);
+    overflow: hidden auto;
+}
+
+.mirroron {
+    transform: rotateY(180deg);
+}
+
+.notification {
+    position: relative;
+    top: -20px;
+    left: -20px;
+    color: red;
+
+}
+
+.wrapper {
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.bi-mic-mute-fill {
+    background-color: red !important;
+}
+
+.bi-camera-video-off-fill,
+.bi-stop-fill {
+    background-color: red !important;
+
+}
+
+.clsIcons {
+    background-color: #0d6efd;
+    border-radius: 50%;
+    border: 1px solid grey;
+    padding: 10px;
+    color: white;
+    display: inline-block;
+    font-size: x-large;
+ /* adding animation buttons */
+    background: transparent;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    position: relative;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    background: rgb(22,9,240);
+  /*  background: rgb(96,9,240); */ 
+    border: none;
+}
+
+  .clsIcons:hover {
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+  }
+
+#sendmessage{
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent; 
+    background: rgb(22,9,240);
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    border: none;
+}
+
+  #acceptdeclineid #accept{
+    position: relative;
+    transition: all 0.3s ease;
+    background: transparent; 
+    background: rgb(22,9,240);
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    border: none;
+   
+}
+
+
+  #acceptdeclineid #reject{
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent; 
+    background: rgb(240, 9, 28);
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    border: none;
+  }
+/* Adding pip animations for mobile App */
+.video-player{
+    cursor: pointer;
+    transform-origin: 100% 100%;
+  }
+ .video-player--bottom {
+    cursor: pointer;
+    transform: scale(0.4);
+    right: 50px;
+    bottom: 50px;
+    display: inline-flex;
+    top: auto;
+    left: auto;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+  }
+  .video-player--animation{
+    transition: 0.5s transform;
+  }
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* For chat and participants
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 300px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog {
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+    left: 0;
+}
+
+/*Right*/
+.modal.right.fade .modal-dialog {
+    right: 0;
+
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+
+.container-fluid {
+    display: table;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/** Video layout **/
+/*#videos {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#VisualMedia {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: calc(var(--width) * var(--cols));
+}
+
+.videoWrap {
+    width: var(--width);
+    height: var(--height);
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+
+} */
+/* Modified VideoLayout */
+#videos {
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#VisualMedia {
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+}
+
+/* backgroundVideo */
+
+.mainVideo video{
+    position: absolute;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+
+.mainVideo #mainlogo{
+    position: absolute;
+    bottom: 0rem;
+    right: 1rem;
+  }
+  .mainVideo #mainlogo img{
+    width: 40px;
+  }
+
+/* listof Videos */
+.videoWrap {
+    max-width: 320px;
+   display: inline-block;
+}
+
+.videoWrap #logo{
+    position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+ }
+ .videoWrap #logo img{
+    width: 40px;
+ }
+
+ .video-list video{
+    max-width: 320px;
+    height: auto;
+    margin: 0 1rem 1rem 0;
+    border-radius: 1.25rem;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+    z-index: 4;
+    }
+
+    @media screen and (max-width:768px){
+        .videoWrap,
+        .video-list video{
+            max-width: 217px;
+            bottom: 3rem;
+            padding-left: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        }
+        
+        
+        @media only screen and (min-device-width: 640px) and (max-device-width: 992px) and (orientation:landscape) {
+          .videoWrap,
+          .video-list video{
+              max-width:145px;
+              padding-bottom: 2rem;
+              padding-left: 0.5rem;
+              border-radius: 0.5rem;
+          }
+         .videoWrap, #dropDown {
+            /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
+            margin: 0.2rem 0.2rem -1.8rem -0.3rem;
+            left: 0;
+            bottom: 4px;
+          }
+          .videoWrap .user-name{
+            /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
+            margin: 0.2rem 0.2rem -1.8rem 0.7rem;
+            left: 31px;
+            bottom: 4px;
+          }.videoWrap #logo img{
+            padding-bottom: 3rem;
+            padding-left: 1rem;
+          }
+        }
+        @media screen and (max-width:480px){
+            .videoWrap,
+            .video-list video{
+                max-width: 145px;
+                bottom: 4.5rem;
+            }
+            .videoWrap #logo{
+              bottom: 1.5rem;
+            }
+            .videoWrap #logo img{
+              width: 30px;
+            }
+            }
+  /* adding MediaQuery for client needs */
+.video-list{
+    z-index: 4;
+ }
+
+  @media screen and (max-width:1024px){
+            #VisualMedia{
+             padding-right: 5rem;
+             padding-bottom: 2rem;
+            }
+            }
+        @media screen and (min-device-width: 1000px) and (max-device-width: 1600px) {
+            #VisualMedia{
+             padding-right: 5rem;
+             padding-bottom: 0rem;
+            }
+            }          
+
+.user-name{
+    color: #fff;
+    float: left;
+    padding: 0.125rem 0.25rem;
+    background: #000;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0 1rem;
+    }
+
+
+
+
+/** Footer **/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.bi-telephone-x-fill {
+    background-color: red !important;
+}
+
+/*.clientlogo {
+    width: 2.5rem;
+    position: absolute;
+    right: 8px;
+    bottom: 3.5px;
+}*/
