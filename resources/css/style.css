@@ -1,4 +1,7 @@
-
+body{
+    overflow-y:hidden;
+    background-color: #000;
+}
 #MainCanvas {
     width: 100%;
     height: auto;
@@ -46,6 +49,9 @@
 
 .red-color {
     color: red;
+}
+.red-color:hover{
+  color:red;
 }
 
 .user-name {
@@ -122,7 +128,7 @@
 }
 
 .clsIcons {
-    background-color: #0d6efd;
+   background-color: #0d6efd;
     border-radius: 50%;
     border: 1px solid grey;
     padding: 10px;
@@ -139,7 +145,7 @@
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
     background: rgb(22,9,240);
-  /*  background: rgb(96,9,240); */ 
+  /*  background: rgb(96,9,240);*/  
     border: none;
 }
 
@@ -186,30 +192,7 @@
     4px 4px 5px 0px rgba(0,0,0,.1);
     border: none;
   }
-/* Adding pip animations for mobile App */
-.video-player{
-    cursor: pointer;
-    transform-origin: 100% 100%;
-  }
- .video-player--bottom {
-    cursor: pointer;
-    transform: scale(0.4);
-    right: 50px;
-    bottom: 50px;
-    display: inline-flex;
-    top: auto;
-    left: auto;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    touch-action: none;
-    user-select: none;
-  }
-  .video-player--animation{
-    transition: 0.5s transform;
-  }
+
 
 /*******************************
 * MODAL AS LEFT/RIGHT SIDEBAR
@@ -276,33 +259,7 @@
     box-sizing: border-box;
 }
 
-/** Video layout **/
-/*#videos {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
 
-#VisualMedia {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: calc(var(--width) * var(--cols));
-}
-
-.videoWrap {
-    width: var(--width);
-    height: var(--height);
-}
-
-video {
-    height: 100%;
-    width: 100%;
-    background-color: black;
-
-} */
 /* Modified VideoLayout */
 #videos {
     margin: 0;
@@ -313,31 +270,46 @@ video {
 
 #VisualMedia {
     display: flex;
-    justify-content: end;
+   justify-content: end;
     flex-wrap: wrap;
+    margin-right: 1rem!important;
 }
+
 
 /* backgroundVideo */
 
 .mainVideo video{
     position: absolute;
-    object-fit: cover;
-    height: 100vh;
+   object-fit: contain;
+    height: 100%;
     width: 100%;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 0;
+   min-height:100vh;
+   min-width:100vw;
   }
 
+/* Changing Orientation */
+/*@media (orientation: landscape) {
+    .mainVideo video {
+        object-fit: cover;
+    }
+}
+@media (orientation: portrait) {
+    .mainVideo video {
+        object-fit: contain;
+    }
+}*/
 
 .mainVideo #mainlogo{
-    position: absolute;
-    bottom: 0rem;
+    position: fixed;
+    bottom: 1rem;
     right: 1rem;
   }
   .mainVideo #mainlogo img{
-    width: 40px;
+    width: 3rem;
   }
 
 /* listof Videos */
@@ -346,23 +318,15 @@ video {
    display: inline-block;
 }
 
-.videoWrap #logo{
-    position: absolute;
-    bottom: 2rem;
-    right: 1rem;
- }
- .videoWrap #logo img{
-    width: 40px;
- }
 
  .video-list video{
-    max-width: 320px;
-    height: auto;
+    width: 320px;
+    height: 13rem;
     margin: 0 1rem 1rem 0;
     border-radius: 1.25rem;
     object-fit: cover;
     transition: all 0.3s ease-in-out;
-    z-index: 4;
+    z-index: 2;
     }
 
     @media screen and (max-width:768px){
@@ -371,65 +335,89 @@ video {
             max-width: 217px;
             bottom: 3rem;
             padding-left: 0.5rem;
-            border-radius: 0.5rem;
+            /* border-radius: 0.5rem; */
         }
         }
         
         
-        @media only screen and (min-device-width: 640px) and (max-device-width: 992px) and (orientation:landscape) {
+        @media only screen and (min-device-width: 700px) and (max-device-width: 992px) and (orientation:landscape) {
           .videoWrap,
           .video-list video{
-              max-width:145px;
-              padding-bottom: 2rem;
-              padding-left: 0.5rem;
-              border-radius: 0.5rem;
+              width:124px;
+		height: 7rem;
+              /*padding-bottom: 2rem;
+              padding-left: 0.5rem;*/
+              /* border-radius: 0.5rem; */
+          }.videoWrap,
+          .video-list{
+	    height: 8.5rem;
+            margin-right: 2rem;
           }
          .videoWrap, #dropDown {
             /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
             margin: 0.2rem 0.2rem -1.8rem -0.3rem;
-            left: 0;
-            bottom: 4px;
+            /*left: 0;
+            bottom: 4px;*/
           }
           .videoWrap .user-name{
             /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
             margin: 0.2rem 0.2rem -1.8rem 0.7rem;
             left: 31px;
             bottom: 4px;
-          }.videoWrap #logo img{
-            padding-bottom: 3rem;
-            padding-left: 1rem;
+	font-size: 0.4rem;
           }
         }
         @media screen and (max-width:480px){
             .videoWrap,
             .video-list video{
-                max-width: 145px;
-                bottom: 4.5rem;
+                /*width: 150px;
+		height: 6rem;
+                bottom: 7rem;*/
+		    width: 320px;
+    		height: 143px;
+    		bottom: 4.1rem;
             }
-            .videoWrap #logo{
-              bottom: 1.5rem;
+           
+           
             }
-            .videoWrap #logo img{
-              width: 30px;
-            }
-            }
-  /* adding MediaQuery for client needs */
-.video-list{
-    z-index: 4;
- }
+            
+            @media only screen and (min-device-width: 995px) and (max-device-width: 1024px) and (orientation:landscape) {
+                .videoWrap,
+                .video-list video{
+                    width: 260px;
+                    border-radius: 0.25rem;
+                }   .videoWrap #DropDown{
+                    position: relative;
+                        left: 6px;
+                  }
 
-  @media screen and (max-width:1024px){
-            #VisualMedia{
-             padding-right: 5rem;
-             padding-bottom: 2rem;
             }
-            }
-        @media screen and (min-device-width: 1000px) and (max-device-width: 1600px) {
-            #VisualMedia{
-             padding-right: 5rem;
-             padding-bottom: 0rem;
-            }
-            }          
+
+            @media only screen and (min-device-width: 482px) and (max-device-width: 699px) and (orientation:landscape) {
+                .videoWrap,
+                .video-list video{
+                    max-width:119px;
+                    padding-bottom: 2rem;
+                    /* padding-left: 0.5rem; */
+                    /* border-radius: 0.5rem; */
+                }.videoWrap,
+                .video-list{
+                  margin-right: 2rem;
+                }
+               .videoWrap, #dropDown {
+                  /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
+                  margin: 0.2rem 0.2rem -1.8rem -0.3rem;
+                  left: 0;
+                  bottom: 4px;
+                }
+                .videoWrap .user-name{
+                  /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
+                  margin: 0.2rem 0.2rem -1.8rem 0.7rem;
+                  left: 31px;
+                  bottom: 4px;
+                }
+              }
+
 
 .user-name{
     color: #fff;
@@ -437,9 +425,8 @@ video {
     padding: 0.125rem 0.25rem;
     background: #000;
     border-radius: 0.5rem;
-    margin: 0.5rem 0 0 1rem;
+    /*margin: 0.5rem 0 0 1rem;*/
     }
-
 
 
 
@@ -455,10 +442,3 @@ video {
 .bi-telephone-x-fill {
     background-color: red !important;
 }
-
-/*.clientlogo {
-    width: 2.5rem;
-    position: absolute;
-    right: 8px;
-    bottom: 3.5px;
-}*/
