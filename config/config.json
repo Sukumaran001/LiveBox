@@ -1,13 +1,14 @@
 {
-    "VC_Port": 3030,
-    "WS_Port": 1350,
-    "production": true,
-    "key": "details/keys/domainname.key",
-    "cert":"details/keys/domainname.crt",
-    "gd_bundle_1": "details/keys/gd_bundle_1.crt",
-    "gd_bundle_2": "details/keys/gd_bundle_2.crt",
-    "gd_bundle_3": "details/keys/gd_bundle_3.crt",
-    "MyCortexResponseServer": [
-        "https://mycortexdev1.vjhsoftware.in/Home/LiveBoxNotify"
-    ]
+  "VC_Port": 3030,
+  "WS_Port": 1350,
+  "production": true,
+  "key": "details/keys/domainname.key",
+  "cert": "details/keys/domainname.crt",
+  "gd_bundle_1": "details/keys/gd_bundle_1.crt",
+  "gd_bundle_2": "details/keys/gd_bundle_2.crt",
+  "gd_bundle_3": "details/keys/gd_bundle_3.crt",
+  "MyCortexResponseServer": [
+    "https://mycortexdev1.vjhsoftware.in/Home/LiveBoxNotify"
+  ],
+  "MyCortexRecordedPath": "/mnt/recordings/"
 }
