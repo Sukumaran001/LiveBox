@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="../resources/vendors/avatar.min.css">
     <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
     <link rel="stylesheet" href="../resources/css/style.css">
+    <!-- link through the manifest json file -->
+    
+<!--<link rel="manifest" href="../resources/js/pwa/pwa-js/pwa.webmanifest">-->
+    <!-- link through dynamic url on manifest jsonfile -->
+    <!--     <link rel="manifest" id="my-manifest-url">
+ -->
+    <!-- link through icons on image folder  -->
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-256x256.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" href="../resources/js/pwa/pwa-js/pwa-icons/icon-512x512.png" />
+
+    <!-- adding PWA meta tag theme color -->
+    <meta name="theme-color" content="#A312FC" />
         <!-- adding jquery UI  -->
         <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.css">
         <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
@@ -20,9 +34,26 @@
     <div id="load" class="text-center waiting-room" style="display: none">
         <div class="offset-1 col-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 align-self-center">
             <br /><br />
+          <!--  <h5 class="title">Meeting name - <span class="text-danger" id="meeting-name"></span></h5>
+            <p class="mb-2 lblHelpTxt" id="idmsg">Admin is yet to accept your request.</p>
+            <div class="iframeDiv"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>PARTICIPANTS</h5>
+                </div>
+                <div class="collapse multi-collapse show" id="collapse-paricipants">
+                    <div class="card-body ">
+                        <div class="text-start moderatorwaitingparticipants" id="listdisplayname"></div>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 
+    <!-- Display all connected users in the conference -->
+  <!--  <div id="videos">
+        <div id="VisualMedia"></div>
+    </div>-->
  <!-- Modified Display all connected users in the conference -->
 <div  class="container-fluid " id="videos">
         <div class="row vh-100 align-items-end align-items-lg-center" >
@@ -55,8 +86,8 @@
         </span>
         <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute all" id="muteall"
             class="clsIcons bi bi-volume-mute-fill m-1"></i>
-        <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Record" id="record"
-            class="clsIcons bi bi-record-circle-fill m-1"></i>
+       <!-- <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Record" id="record"
+            class="clsIcons bi bi-record-circle-fill m-1"></i>-->
         <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="switch camera"
             id="switchcamera" class="clsIcons bi bi-arrow-repeat m-1"></i>
         <i id="idSettings" data-bs-toggle="modal" data-bs-target="#idMediaCaptureSettingsModal"
@@ -199,6 +230,7 @@
     <script src="../resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../resources/vendors/notiflix-aio-2.7.0.min.js"></script>
     <script src="../resources/vendors/adapter-latest.js"></script>
+   <!-- <script src="/socket.io/socket.io.js"></script>-->
     <script src="../resources/vendors/socket/socket.io.js"></script>
 <!-- Jquery UI -->
 <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
@@ -206,10 +238,12 @@
     <!-- Custom scripts -->
     <script src="../resources/js/Animation/Pen.js"></script>
     <script src="../resources/js/UI/commonfunctions.js"></script>
+   <!-- <script src="../resources/js/UI/video-layout.js"></script> -->
     <!-- Custom scripts as Module -->
     <script src="./main.js" type="module"></script>
 
     <!-- adding the pwa.js file in script tag -->
+   <!-- <script src="../resources/js/pwa/pwa-js/pwa.js"></script>-->
 
    <!-- adding jquery UI  -->
 <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.js"></script>
@@ -221,6 +255,17 @@
 <script>
   //  For browser videolayout
         var useragent = navigator.userAgent;   
+        /* if(useragent.match(/chrome|chromium|crios/i)){
+                document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }else if(useragent.match(/firefox|fxios/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }  else if(useragent.match(/safari/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }else if(useragent.match(/opr\//i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           } else if(useragent.match(/edg/i)){
+            document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
+           }*/ 
     
                                                                                                                                                                                           
   // For use within normal web clients                                                                                                                                                             
@@ -233,10 +278,14 @@ if(isIphone){
     
     document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                                            
    document.write('<script type="text/javascript" src="../resources/js/UI/cordova/ios/www/www/cordova.js"><\/script>');
+    // For ios Layout
+    //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');      
                                                                                 
 }else if(realdevice){  
    document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                              
   document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/client_cordova/client_WWFolder/www/cordova.js"><\/script>');
+   // For ios Layout
+   // document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');   
                                                      
 }              
 
@@ -247,9 +296,10 @@ var isAndroid = /Android/i.test(useragent) || /Android/i.test(useragent) || /And
 if(isAndroid){                                                                                                                                                                                       
                                                                                                                                                                                                    
   document.write('<script type="text/javascript" src="../resources/js/UI/cordova/android/Event_listener.js"><\/script> <script type="text/javascript" src="../resources/js/UI/cordova/android/platform_www/cordova.js" ><\/script>');
+  //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');
 }                                                                                                                                                                                                    
                                                                                                                                                                                                    
- </script> 
+</script> 
 
 
 </body>

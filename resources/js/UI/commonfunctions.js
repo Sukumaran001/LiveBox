@@ -151,7 +151,7 @@ notification = (message, type = "success") => {
     Notiflix.Notify.Init({
         width: "400px",
         zindex: "9999999999",
-        position: "right-bottom",
+        position: "right-top",
         messageMaxLength: 300,
         fontSize: "16px",
         timeout: 2500,

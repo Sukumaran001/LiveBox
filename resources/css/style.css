@@ -144,7 +144,7 @@ body{
      7px 7px 20px 0px rgba(0,0,0,.1),
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
-    background: rgb(22,9,240);
+   /* background: rgb(22,9,240); */
   /*  background: rgb(96,9,240);*/  
     border: none;
 }
@@ -259,6 +259,16 @@ body{
     box-sizing: border-box;
 }
 
+/* ModifyPopup for modalParticipants*/
+#modalParticipants .modal-content {
+    width: 80%;
+    border-radius: 2.5rem;
+    box-sizing: border-box;
+}
+
+#modalParticipants .modal-body {
+    padding: 0rem;
+}
 
 /* Modified VideoLayout */
 #videos {
@@ -321,7 +331,7 @@ body{
 
  .video-list video{
     width: 320px;
-    height: 13rem;
+    height: 10rem;
     margin: 0 1rem 1rem 0;
     border-radius: 1.25rem;
     object-fit: cover;
@@ -332,7 +342,8 @@ body{
     @media screen and (max-width:768px){
         .videoWrap,
         .video-list video{
-            max-width: 217px;
+           /* max-width: 217px;*/
+	    max-width:184px;
             bottom: 3rem;
             padding-left: 0.5rem;
             /* border-radius: 0.5rem; */
@@ -441,4 +452,107 @@ body{
 
 .bi-telephone-x-fill {
     background-color: red !important;
+}
+
+/* blink Record Icon */
+/* #blink {
+    width: 8rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    top: 2rem;
+    border-radius: 2rem;
+    z-index: 2;
+     background: transparent;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+
+}
+
+.RecordBlink {
+    color: red;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0.2;
+    }
+}
+
+.close-icon {
+    position: absolute;
+    top: 4px;
+    right: 9.5px;
+} */
+
+
+/* conferenceTimer */
+#conferencetimer {
+    right: 4rem;
+    top: 5rem;
+    width: 6rem;
+    /* height: 4rem; */
+    border-radius: 2rem;
+    background: transparent;
+    /* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1); */
+
+}
+
+/* timer Background */
+.ConfereceTimeCardBlink {
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    animation: TimerBlink 1s linear infinite;
+}
+
+@keyframes TimerBlink {
+    50% {
+        opacity: 0.5;
+        background-color: #0000FF;
+    }
+}
+
+#clockdiv {
+    text-align: center;
+    line-height: 1.2;
+    padding: 0.5rem 0.5rem;
+}
+
+#ConferenceMinutes {
+
+    color: #fff;
+}
+
+#ConferenceSeconds {
+
+    color: #fff;
+    margin-left: 2px;
+}
+
+#timeColon {
+    color: #fff;
+}
+
+
+.recordblink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0.5;
+        background-color: red;
+    }
+}
+.RecordTextAdding {
+    height: 3rem;
+}
+
+.MobileHeight{
+ height: 10rem;
 }
