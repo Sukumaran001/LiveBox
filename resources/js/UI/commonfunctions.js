@@ -138,9 +138,18 @@ validateAuthorizedUser = () => {
         return false;
     }
 }
-setLocalStorage = (name, value) => {
-    localStorage.setItem(name, value);
+if (navigator.cookieEnabled) {
+    setLocalStorage = (name, value) => {
+        localStorage.setItem(name, value);
+    }
+} else {
+        confirm("Please Allow Your Browser ThirdParty Cookies!")
 }
+
+
+/*setLocalStorage = (name, value) => {
+    localStorage.setItem(name, value);
+}*/
 
 getLocalStorage = (name) => {
     localStorage.getItem(name)

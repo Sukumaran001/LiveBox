@@ -1,7 +1,13 @@
-body{
-    overflow-y:hidden;
-    background-color: #000;
+body {
+    overflow-x: hidden;	
+    overflow-y: hidden;
+    background-image: linear-gradient(#f2ccfa7c, #d3c8f862),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='305' height='346' viewBox='0 0 305 346' fill='none'%3E%3Cpath opacity='0.1' d='M98.4469 338.153L275.544 236.439C293.765 225.977 305 206.63 305 185.704V-17.7044C305 -38.6295 293.784 -57.9767 275.544 -68.4393L98.4469 -170.153C80.2255 -180.616 57.7745 -180.616 39.5531 -170.153L-137.544 -68.4393C-155.765 -57.9767 -167 -38.6295 -167 -17.7044V185.704C-167 206.63 -155.784 225.977 -137.544 236.439L39.5531 338.153C57.7745 348.616 80.2255 348.616 98.4469 338.153ZM39.5531 275.603L-83.0872 205.164C-101.309 194.702 -112.544 175.355 -112.544 154.43V13.5705C-112.544 -7.35461 -101.327 -26.7018 -83.0872 -37.1644L39.5531 -107.603C57.7745 -118.066 80.2255 -118.066 98.4469 -107.603L221.068 -37.1644C239.29 -26.7018 250.525 -7.35461 250.525 13.5705V154.43C250.525 175.355 239.309 194.702 221.068 205.164L98.4469 275.603C80.2255 286.066 57.7745 286.066 39.5531 275.603V275.603Z' fill='%23DF6BF0'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='304' height='346' viewBox='0 0 304 346' fill='none'%3E%3Cpath opacity='0.1' d='M265.447 516.153L442.544 414.439C460.765 403.977 472 384.63 472 363.704V160.296C472 139.37 460.784 120.023 442.544 109.561L265.447 7.8469C247.226 -2.61563 224.774 -2.61563 206.553 7.8469L29.4563 109.561C11.2349 120.023 0 139.37 0 160.296V363.704C0 384.63 11.2161 403.977 29.4563 414.439L206.553 516.153C224.774 526.616 247.226 526.616 265.447 516.153ZM206.553 453.603L83.9128 383.164C65.6914 372.702 54.4564 353.355 54.4564 332.43V191.57C54.4564 170.645 65.6725 151.298 83.9128 140.836L206.553 70.3967C224.774 59.9342 247.226 59.9342 265.447 70.3967L388.068 140.836C406.29 151.298 417.525 170.645 417.525 191.57V332.43C417.525 353.355 406.309 372.702 388.068 383.164L265.447 453.603C247.226 464.066 224.774 464.066 206.553 453.603V453.603Z' fill='%23DF6BF0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right bottom, left top;
 }
+
 #MainCanvas {
     width: 100%;
     height: auto;
@@ -50,15 +56,40 @@ body{
 .red-color {
     color: red;
 }
-.red-color:hover{
-  color:red;
+
+.red-color:hover {
+    color: red;
 }
 
+
+
+
+
+
+/* 26-12 modified Username */
 .user-name {
-    border-radius: 5px;
-    padding: 0ch;
-    background-color: black;
-    color: white;
+    color: #100146;
+    font-weight: bold;
+    float: left;
+    padding: 0.125rem 0.25rem;
+    background: transparent;
+    border-radius: 0.5rem;
+   /* margin: 0.5rem 0 0 1rem;*/
+}
+
+.toggleUserName {
+    position: absolute;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #100146;
+    float: none;
+    padding: 0.125rem 0.25rem;
+    background: transparent;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0 1rem;
+    text-align: center !important;
 }
 
 
@@ -128,70 +159,73 @@ body{
 }
 
 .clsIcons {
-   background-color: #0d6efd;
+    /* background-color: #0d6efd; */
     border-radius: 50%;
     border: 1px solid grey;
     padding: 10px;
     color: white;
     display: inline-block;
     font-size: x-large;
- /* adding animation buttons */
+    /* adding animation buttons */
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
     background: transparent;
-    cursor: pointer; 
-    transition: all 0.3s ease;
-    position: relative;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
-   /* background: rgb(22,9,240); */
-  /*  background: rgb(96,9,240);*/  
     border: none;
 }
 
-  .clsIcons:hover {
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
-  }
 
-#sendmessage{
+.clsIcons:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+        -4px -4px 6px 0 rgba(116, 125, 136, .5),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+    background: rgb(22, 9, 240);
+}
+
+#sendmessage {
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: transparent; 
-    background: rgb(22,9,240);
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
+    background: transparent;
+    background: rgb(22, 9, 240);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
     border: none;
 }
 
-  #acceptdeclineid #accept{
+#acceptdeclineid #accept {
+   /* width:4rem;*/
     position: relative;
     transition: all 0.3s ease;
-    background: transparent; 
-    background: rgb(22,9,240);
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
+    background: transparent;
+    background: rgb(22, 9, 240);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
     border: none;
-   
+
 }
 
 
-  #acceptdeclineid #reject{
+#acceptdeclineid #reject {
+    /*width: 4rem;*/
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: transparent; 
+    background: transparent;
     background: rgb(240, 9, 28);
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
     border: none;
-  }
+}
 
 
 /*******************************
@@ -221,6 +255,7 @@ body{
 .modal.right .modal-body {
     padding: 15px 15px 80px;
 }
+
 
 /*Left*/
 .modal.left.fade .modal-dialog {
@@ -259,68 +294,39 @@ body{
     box-sizing: border-box;
 }
 
-/* ModifyPopup for modalParticipants*/
-#modalParticipants .modal-content {
-    width: 80%;
-    border-radius: 2.5rem;
-    box-sizing: border-box;
-}
-
-#modalParticipants .modal-body {
-    padding: 0rem;
-}
 
 /* Modified VideoLayout */
 #videos {
     margin: 0;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 #VisualMedia {
     display: flex;
-   justify-content: end;
+    justify-content: end;
     flex-wrap: wrap;
-    margin-right: 1rem!important;
+    margin-right: 1rem !important;
+    /* max-width: calc(var(--width) * var(--cols)); */
 }
-
 
 /* backgroundVideo */
 
-.mainVideo video{
-    position: absolute;
-   object-fit: contain;
+.mainVideo video {
+   /* position: absolute;*/
+   position: fixed;
+    object-fit: contain;
     height: 100%;
     width: 100%;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 0;
-   min-height:100vh;
-   min-width:100vw;
-  }
-
-/* Changing Orientation */
-/*@media (orientation: landscape) {
-    .mainVideo video {
-        object-fit: cover;
-    }
+    z-index: -1;
+ background-repeat: no-repeat;
+/* background-color: #f2ccfa;*/
 }
-@media (orientation: portrait) {
-    .mainVideo video {
-        object-fit: contain;
-    }
-}*/
 
-.mainVideo #mainlogo{
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-  }
-  .mainVideo #mainlogo img{
-    width: 3rem;
-  }
 
 /* listof Videos */
 .videoWrap {
@@ -328,117 +334,40 @@ body{
    display: inline-block;
 }
 
+ /*.video-list video{
+    width: 258px;
+    height: 13rem;
+    margin: 0 1rem 1rem 0;
+    border-radius: 1.25rem;
+    object-fit: contain;
+    z-index: 2;
+    }*/
 
- .video-list video{
-    width: 320px;
+.video-list video{
+    width: 258px;
     height: 10rem;
     margin: 0 1rem 1rem 0;
     border-radius: 1.25rem;
     object-fit: cover;
-    transition: all 0.3s ease-in-out;
     z-index: 2;
+}
+
+
+@media only screen and (max-width: 600px) and (max-height: 600px) {
+    #MediaStream {
+	padding-bottom: 1rem;
     }
 
-    @media screen and (max-width:768px){
-        .videoWrap,
-        .video-list video{
-           /* max-width: 217px;*/
-	    max-width:184px;
-            bottom: 3rem;
-            padding-left: 0.5rem;
-            /* border-radius: 0.5rem; */
-        }
-        }
-        
-        
-        @media only screen and (min-device-width: 700px) and (max-device-width: 992px) and (orientation:landscape) {
-          .videoWrap,
-          .video-list video{
-              width:124px;
-		height: 7rem;
-              /*padding-bottom: 2rem;
-              padding-left: 0.5rem;*/
-              /* border-radius: 0.5rem; */
-          }.videoWrap,
-          .video-list{
-	    height: 8.5rem;
-            margin-right: 2rem;
-          }
-         .videoWrap, #dropDown {
-            /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
-            margin: 0.2rem 0.2rem -1.8rem -0.3rem;
-            /*left: 0;
-            bottom: 4px;*/
-          }
-          .videoWrap .user-name{
-            /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
-            margin: 0.2rem 0.2rem -1.8rem 0.7rem;
-            left: 31px;
-            bottom: 4px;
-	font-size: 0.4rem;
-          }
-        }
-        @media screen and (max-width:480px){
-            .videoWrap,
-            .video-list video{
-                /*width: 150px;
-		height: 6rem;
-                bottom: 7rem;*/
-		    width: 320px;
-    		height: 143px;
-    		bottom: 4.1rem;
-            }
-           
-           
-            }
-            
-            @media only screen and (min-device-width: 995px) and (max-device-width: 1024px) and (orientation:landscape) {
-                .videoWrap,
-                .video-list video{
-                    width: 260px;
-                    border-radius: 0.25rem;
-                }   .videoWrap #DropDown{
-                    position: relative;
-                        left: 6px;
-                  }
-
-            }
-
-            @media only screen and (min-device-width: 482px) and (max-device-width: 699px) and (orientation:landscape) {
-                .videoWrap,
-                .video-list video{
-                    max-width:119px;
-                    padding-bottom: 2rem;
-                    /* padding-left: 0.5rem; */
-                    /* border-radius: 0.5rem; */
-                }.videoWrap,
-                .video-list{
-                  margin-right: 2rem;
-                }
-               .videoWrap, #dropDown {
-                  /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
-                  margin: 0.2rem 0.2rem -1.8rem -0.3rem;
-                  left: 0;
-                  bottom: 4px;
-                }
-                .videoWrap .user-name{
-                  /* margin: -0.8rem 0.2rem -1.8rem -0.3rem; */
-                  margin: 0.2rem 0.2rem -1.8rem 0.7rem;
-                  left: 31px;
-                  bottom: 4px;
-                }
-              }
-
-
-.user-name{
-    color: #fff;
-    float: left;
-    padding: 0.125rem 0.25rem;
-    background: #000;
-    border-radius: 0.5rem;
-    /*margin: 0.5rem 0 0 1rem;*/
+    .videoWrap,
+    .video-list video {
+        width: 154px !important;
+        height: 8rem;
+        margin: 0 1rem 1rem 0;
+        border-radius: 1.25rem;
+       /* transition: all 0.3s ease-in-out;*/
+        z-index: 2;
     }
-
+}
 
 
 /** Footer **/
@@ -454,8 +383,9 @@ body{
     background-color: red !important;
 }
 
-/* blink Record Icon */
-/* #blink {
+
+/* blink Record TimerIcon Icon */
+#blink {
     width: 8rem;
     margin: 0 auto;
     float: none;
@@ -463,44 +393,56 @@ body{
     top: 2rem;
     border-radius: 2rem;
     z-index: 2;
-     background: transparent;
+    background: transparent;
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
         7px 7px 20px 0px rgba(0, 0, 0, .1),
         4px 4px 5px 0px rgba(0, 0, 0, .1);
 
 }
 
-.RecordBlink {
-    color: red;
-    animation: blinker 1s linear infinite;
+
+#RecordText {
+    color: #fff;
+    position: absolute;
+    padding-left: 1.5rem;
+    padding-inline: -4rem;
+    top: 0.5rem;
+    padding-bottom: -5rem;
+    padding-right: -3rem;
+    animation: TextBlink 1s linear infinite;
 }
 
-@keyframes blinker {
+@keyframes TextBlink {
     50% {
-        opacity: 0.2;
+        opacity: 0.1;
     }
 }
+
+
 
 .close-icon {
     position: absolute;
     top: 4px;
     right: 9.5px;
-} */
+    color: #fff;
+}
 
 
 /* conferenceTimer */
 #conferencetimer {
-    right: 4rem;
+    z-index: -1;
+    left: 1rem;
     top: 5rem;
-    width: 6rem;
-    /* height: 4rem; */
+    width: 5rem;
     border-radius: 2rem;
     background: transparent;
-    /* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+  /*  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
         7px 7px 20px 0px rgba(0, 0, 0, .1),
-        4px 4px 5px 0px rgba(0, 0, 0, .1); */
+        4px 4px 5px 0px rgba(0, 0, 0, .1);*/
+
 
 }
+
 
 /* timer Background */
 .ConfereceTimeCardBlink {
@@ -518,8 +460,8 @@ body{
 }
 
 #clockdiv {
-    text-align: center;
-    line-height: 1.2;
+   /* text-align: center;*/
+    line-height: 2.2;
     padding: 0.5rem 0.5rem;
 }
 
@@ -536,8 +478,12 @@ body{
 
 #timeColon {
     color: #fff;
+    z-index: 2;
 }
 
+.RecordTextAdding {
+    height: 3rem;
+}
 
 .recordblink {
     animation: blinker 1s linear infinite;
@@ -549,10 +495,27 @@ body{
         background-color: red;
     }
 }
-.RecordTextAdding {
-    height: 3rem;
+
+
+/* avatarBG */
+#avatarBg {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    float: none;
+    padding: 0.125rem 0.25rem;
+    background: #3D224D;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0 1rem;
+    text-align: center !important;
+    z-index: -1;
 }
 
-.MobileHeight{
- height: 10rem;
+
+#modalParticipants .modal-body {
+    padding: 0rem;
 }

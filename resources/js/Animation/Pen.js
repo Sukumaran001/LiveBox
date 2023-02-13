@@ -56,7 +56,35 @@
     //////////// 👇👇👇👇👇👇👇👇  |*|*|*| MEDIA PEN FUNCTIONS 👇👇👇👇👇👇👇👇 ||||||||||||||
 
 
-    function DrawMedia(ctx, objDrawVariables) {
+function DrawMedia(ctx, objDrawVariables) {
+    ctx.save(); //Start Alpha work
+    ctx.globalAlpha = objDrawVariables.mediaAlpha;
+    DrawMediaBorder(ctx, objDrawVariables);
+    if (objDrawVariables.video && objDrawVariables.video != "") {
+        if (objDrawVariables.isMirrorVideo) {
+            ctx.translate(objDrawVariables.w, 0);
+            ctx.scale(-1, 1);
+            /* Calculate At Potrait orientation */
+            if (objDrawVariables.videocroph > objDrawVariables.videocropw) {
+                this.videodraw_x = (objDrawVariables.videocropw - (objDrawVariables.videocroph * 16) / 9) / 2;
+                this.videodraw_w = (objDrawVariables.videocroph * 16) / 9;
+                ctx.drawImage(objDrawVariables.video, this.videodraw_x, objDrawVariables.videocropy, this.videodraw_w, objDrawVariables.videocroph, -objDrawVariables.x, objDrawVariables.y, objDrawVariables.w, objDrawVariables.h);
+            } else {
+                /* Calculate At LandScape orientation */
+                ctx.drawImage(objDrawVariables.video, objDrawVariables.videocropx, objDrawVariables.videocropy, objDrawVariables.videocropw, objDrawVariables.videocroph, -objDrawVariables.x, objDrawVariables.y, objDrawVariables.w, objDrawVariables.h);
+            }
+        }
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    // if (objDrawVariables.video && objDrawVariables.video != '') ctx.drawImage(objDrawVariables.video, objDrawVariables.videocropx, objDrawVariables.videocropy, objDrawVariables.videocropw, objDrawVariables.videocroph, objDrawVariable>
+    ctx.globalAlpha = 1;
+    ctx.restore(); //End Alpha work
+
+    DrawMediaOverlays(ctx, objDrawVariables);
+}
+
+
+   /* function DrawMedia(ctx, objDrawVariables) {
 
         ctx.save(); //Start Alpha work
         ctx.globalAlpha = objDrawVariables.mediaAlpha;
@@ -80,7 +108,7 @@
 
         DrawMediaOverlays(ctx, objDrawVariables);
 
-    }
+    }*/
 
 
 

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
     <link rel="stylesheet" href="../resources/css/style.css">
     <!-- link through the manifest json file -->
-    
-<!--<link rel="manifest" href="../resources/js/pwa/pwa-js/pwa.webmanifest">-->
+
+    <!--<link rel="manifest" href="../resources/js/pwa/pwa-js/pwa.webmanifest">-->
     <!-- link through dynamic url on manifest jsonfile -->
     <!--     <link rel="manifest" id="my-manifest-url">
  -->
@@ -23,18 +23,19 @@
 
     <!-- adding PWA meta tag theme color -->
     <meta name="theme-color" content="#A312FC" />
-        <!-- adding jquery UI  -->
-        <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.css">
-        <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
+    <!-- adding jquery UI  -->
+    <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.css">
+    <link rel="stylesheet" href="../resources/vendors/jquery/jquery_UI/jquery-ui.min.css">
 
 </head>
 
 <body>
     <!-- Waiting room for guest users-->
     <div id="load" class="text-center waiting-room" style="display: none">
-        <div class="offset-1 col-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 align-self-center">
+        <div
+            class="offset-1 col-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 align-self-center">
             <br /><br />
-          <!--  <h5 class="title">Meeting name - <span class="text-danger" id="meeting-name"></span></h5>
+            <!--  <h5 class="title">Meeting name - <span class="text-danger" id="meeting-name"></span></h5>
             <p class="mb-2 lblHelpTxt" id="idmsg">Admin is yet to accept your request.</p>
             <div class="iframeDiv"></div>
             <div class="card">
@@ -51,19 +52,45 @@
     </div>
 
     <!-- Display all connected users in the conference -->
-  <!--  <div id="videos">
+    <!--  <div id="videos">
         <div id="VisualMedia"></div>
     </div>-->
- <!-- Modified Display all connected users in the conference -->
-<div  class="container-fluid " id="videos">
-        <div class="row vh-100 align-items-end align-items-lg-center" >
-            <div class="col-12 offset-lg-9 col-lg-2 text-center text-lg-end ">
-                <div id="VisualMedia" class="me-3"></div> 
-            </div>
-         </div>
+    <!-- Modified Display all connected users in the conference -->
+
+    <!-- background Avatars -->
+    <div class="container">
+        <div id="avatarBg" class="card position-absolute rounded-circle">
+            <span><i class="bi bi-person  img-fluid" style="font-size:5rem; color: #f4e8fd;"></i></span>
+            <span class="mt-4 connectText text-nowrap" style="font-weight: bold; color: #100146;">
+                Connecting...
+            </span>
+        </div>
     </div>
 
+    <!-- StreamedVideos -->
+    <div class="container-fluid m-0" id="videos">
+        <div id="MediaRow" class="row vh-100 align-items-end justify-content-lg-around">
+            <div id="MediaStream" class="col-12 offset-lg-9 col-lg-2 text-center text-lg-end mb-3">
+                <div id="VisualMedia"></div>
+            </div>
+        </div>
+        <!-- Adding Logo -->
+        <span id="mainlogo" class="position-absolute bottom-0 start-0 mx-2 mb-2">
+            <img src="./hiveLogo.png" alt="logo" class="img-fluid rounded " style="width:2rem" />
+        </span>
+    </div>
 
+    <!-- conference Time -->
+    <div class="container">
+        <div id="conferencetimer" class="card position-absolute">
+            <div id="clockdiv" class="card-body text-center">
+                <span id="ConferenceMinutes" class="minutes" style="font-weight: bold; color: #100146;"></span>
+                <span id="timeColon" style="font-weight: bold; color: #100146;">:</span>
+                <span id="ConferenceSeconds" class="seconds" style="font-weight: bold; color: #100146;"></span>
+                <span class="RecordText"></span>
+            </div>
+        </div>
+    </div>
 
     <!--  This is only for admin -->
     <div id="Main" style="display: none"></div>
@@ -86,7 +113,7 @@
         </span>
         <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute all" id="muteall"
             class="clsIcons bi bi-volume-mute-fill m-1"></i>
-       <!-- <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Record" id="record"
+        <!-- <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="Record" id="record"
             class="clsIcons bi bi-record-circle-fill m-1"></i>-->
         <i style="display: none" data-bs-toggle="tooltip" data-bs-placement="top" title="switch camera"
             id="switchcamera" class="clsIcons bi bi-arrow-repeat m-1"></i>
@@ -101,7 +128,7 @@
                 class="clsIcons bi bi-people-fill m-1"></i>
             <i id="participantsNotification" class="notification d-none bi bi-exclamation-circle-fill"></i>
         </span>
-        <a id="idEndCall"><i  title="End call" class="clsIcons bi bi-telephone-x-fill m-1"></i></a>
+        <a id="idEndCall"><i title="End call" class="clsIcons bi bi-telephone-x-fill m-1"></i></a>
 
     </div>
 
@@ -178,7 +205,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></i>
+                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"
+                        style="background: rgb(22,9,240);"><span aria-hidden="true"></i>
                     <h4 class="modal-title" id="myModalLabel2">Chat</h4>
                 </div>
                 <div class="modal-body p-0">
@@ -202,15 +230,14 @@
 
 
     <!-- PARTICIPANTS Modal -->
-    <div class="modal  fade" id="modalParticipants" tabindex="-1" role="dialog"
-        aria-labelledby="modalParticipants">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+	    <div class="modal fade" id="modalParticipants" tabindex="-1" role="dialog" aria-labelledby="modalParticipants">
+        <div class="modal-dialog modal-sm"  role="document">
+            <div class="modal-content" style="border-radius: 2rem;">
+                <div class="modal-header text-center">
                     <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button> -->
-                    <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></i>
-                    <h4 class="modal-title">Participants</h4>
+                    <!-- <i class="clsIcons bi bi-x" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></i> -->
+                    <h4 class="modal-title w-100">Participants</h4>
                 </div>
                 <div class="modal-body">
                     <div id="Waiting">
@@ -223,38 +250,64 @@
         </div><!-- modal-dialog -->
     </div><!-- modal -->
 
+ <!-- Offline Modal -->
+    <div class="modal fade " id="Offline" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content"
+                style="background: transparent;
+            box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);">
+                <div class="modal-body">
+                    <div id="network">
+                        <div class="modal-body  border-0">
+                            <span style="color: white; font-weight: bold;">No Internet Connection Try Again!</span>
+                            <div id="RetryCancel">
+                                <span id="retrybtn" class="btn"
+                                    style="color: green;  font-weight: bold; cursor: pointer; box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);">Retry</span>
+                                <span id="cancellbtn" class="btn"
+                                    style="color: red;  font-weight: bold; float: right; cursor: pointer; box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);">ca>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Start Default scripts -->
-   <script src="../resources/vendors/jquery/jquery-3.6.0.min.js"></script> 
+    <script src="../resources/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../resources/vendors/jquery/jquery-dateformat.js"></script>
     <script src="../resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../resources/vendors/notiflix-aio-2.7.0.min.js"></script>
     <script src="../resources/vendors/adapter-latest.js"></script>
-   <!-- <script src="/socket.io/socket.io.js"></script>-->
+    <!-- <script src="/socket.io/socket.io.js"></script>-->
     <script src="../resources/vendors/socket/socket.io.js"></script>
-<!-- Jquery UI -->
-<script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
-<script src="../resources/vendors/jquery/jquery_UI/jquery.ui.touch-punch.min.js"></script>
+    <!-- Jquery UI -->
+    <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
+    <script src="../resources/vendors/jquery/jquery_UI/jquery.ui.touch-punch.min.js"></script>
     <!-- Custom scripts -->
     <script src="../resources/js/Animation/Pen.js"></script>
     <script src="../resources/js/UI/commonfunctions.js"></script>
-   <!-- <script src="../resources/js/UI/video-layout.js"></script> -->
+    <script src="../resources/js/UI/network.js" type="module"></script>
+    <!-- <script src="../resources/js/UI/video-layout.js"></script> -->
     <!-- Custom scripts as Module -->
     <script src="./main.js" type="module"></script>
 
     <!-- adding the pwa.js file in script tag -->
-   <!-- <script src="../resources/js/pwa/pwa-js/pwa.js"></script>-->
+    <!-- <script src="../resources/js/pwa/pwa-js/pwa.js"></script>-->
 
-   <!-- adding jquery UI  -->
-<script src="../resources/vendors/jquery/jquery_UI/jquery-ui.js"></script>
- <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
-<script src="../resources/vendors/jquery/jquery_UI/jquery.ui.touch-punch.min.js"></script>
+    <!-- adding jquery UI  -->
+   <!-- <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.js"></script>-->
+    <script src="../resources/vendors/jquery/jquery_UI/jquery-ui.min.js"></script>
+    <script src="../resources/vendors/jquery/jquery_UI/jquery.ui.touch-punch.min.js"></script>
+   <!--cordova-->
 
-<!--cordova-->
-
-<script>
-  //  For browser videolayout
-        var useragent = navigator.userAgent;   
+    <script>
+        //  For browser videolayout
+        var useragent = navigator.userAgent;
         /* if(useragent.match(/chrome|chromium|crios/i)){
                 document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
            }else if(useragent.match(/firefox|fxios/i)){
@@ -265,41 +318,41 @@
             document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
            } else if(useragent.match(/edg/i)){
             document.write('<script type="text/javascript" src="../resources/js/UI/video-layout.js"><\/script>')
-           }*/ 
-    
-                                                                                                                                                                                          
-  // For use within normal web clients                                                                                                                                                             
-var isIphone = navigator.userAgent.match(/iPhone|iPad|iPod/i) != null;                                                                                                                             
-var realdevice;                                                                                                                                                                                    
-// For use within iphone developer UIWebView                                                                                                                                                        
-                                                                                                                                                                
-var isIphone = /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent);                                                                   
-if(isIphone){                                                                                                                                                                                        
-    
-    document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                                            
-   document.write('<script type="text/javascript" src="../resources/js/UI/cordova/ios/www/www/cordova.js"><\/script>');
-    // For ios Layout
-    //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');      
-                                                                                
-}else if(realdevice){  
-   document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')                                                                                                                                                                              
-  document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/client_cordova/client_WWFolder/www/cordova.js"><\/script>');
-   // For ios Layout
-   // document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');   
-                                                     
-}              
+           }*/
 
-                                                                                                                                                                                                  
-//   Android                                                                                                                                                                                         
-  var isAndroid = navigator.userAgent.match(/Android/i) != null;                                                                                                                                   
-var isAndroid = /Android/i.test(useragent) || /Android/i.test(useragent) || /Android/i.test(useragent);                                                                                              
-if(isAndroid){                                                                                                                                                                                       
-                                                                                                                                                                                                   
-  document.write('<script type="text/javascript" src="../resources/js/UI/cordova/android/Event_listener.js"><\/script> <script type="text/javascript" src="../resources/js/UI/cordova/android/platform_www/cordova.js" ><\/script>');
-  //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');
-}                                                                                                                                                                                                    
-                                                                                                                                                                                                   
-</script> 
+
+        // For use within normal web clients                                                                                                                                                             
+        var isIphone = navigator.userAgent.match(/iPhone|iPad|iPod/i) != null;
+        var realdevice;
+        // For use within iphone developer UIWebView                                                                                                                                                        
+
+        var isIphone = /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent) || /iPhone|iPad|iPod/i.test(useragent);
+        if (isIphone) {
+
+            document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')
+            document.write('<script type="text/javascript" src="../resources/js/UI/cordova/ios/www/www/cordova.js"><\/script>');
+            // For ios Layout
+            //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');      
+
+        } else if (realdevice) {
+            document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/cordova_listener.js"><\/script>')
+            document.write('<script type="text/javascript"  src="../resources/js/UI/cordova/ios/client_cordova/client_WWFolder/www/cordova.js"><\/script>');
+            // For ios Layout
+            // document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');   
+
+        }
+
+
+        //   Android                                                                                                                                                                                         
+        var isAndroid = navigator.userAgent.match(/Android/i) != null;
+        var isAndroid = /Android/i.test(useragent) || /Android/i.test(useragent) || /Android/i.test(useragent);
+        if (isAndroid) {
+
+            document.write('<script type="text/javascript" src="../resources/js/UI/cordova/android/Event_listener.js"><\/script> <script type="text/javascript" src="../resources/js/UI/cordova/android/platform_www/cordova.js" ><\/script>');
+            //document.write('<script type="text/javascript" src="../resources/js/UI/App-video_layout.js"><\/script>');
+        }
+
+    </script>
 
 
 </body>

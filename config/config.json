@@ -7,19 +7,19 @@
   "gd_bundle_1": "details/keys/gd_bundle_1.crt",
   "gd_bundle_2": "details/keys/gd_bundle_2.crt",
   "gd_bundle_3": "details/keys/gd_bundle_3.crt",
-"MyCortexRecordedPath": "/mnt/recordings",
-   "LiveBoxNotificationAlert": [
-        "https://mycortexdev1.vjhsoftware.in/LiveBox/LiveBoxNotification"
-    ],
+  "LiveBoxNotificationAlert": [
+    "https://mycortexdev1.vjhsoftware.in/LiveBox/LiveBoxNotification"
+  ],
   "MyCortexResponseServer": [
     "https://qa.myhealthae.com/Home/LiveBoxNotify",
-     "https://mycortexdev1.vjhsoftware.in/Home/LiveBoxNotify"
+    "https://mycortexdev1.vjhsoftware.in/Home/LiveBoxNotify"
   ],
-  "MyCortexRecordedPath": "/mnt/recordings/",
-   "MyCortexConferenceTimeGetApi": [
-        "https://mycortexdev1.vjhsoftware.in/Livebox/Get_AppointmentDuration?Conference_ID="
-    ],
-    "MyCortexConferenceTimePostApi": [
-          "https://mycortexdev1.vjhsoftware.in/Livebox/LiveBoxRemainingTimeNotify/"
-    ]
+  "MyCortexConferenceTimeGetApi": [
+    "https://mycortexdev1.vjhsoftware.in/Livebox/Get_AppointmentDuration?Conference_ID=",
+    "https://uat.hive.clinic/Livebox/Get_AppointmentDuration?Conference_ID="
+  ],
+  "MyCortexConferenceTimePostApi": [
+    "https://mycortexdev1.vjhsoftware.in/Livebox/LiveBoxRemainingTimeNotify/"
+  ],
+  "MyCortexRecordedPath": "/mnt/recordings/"
 }
