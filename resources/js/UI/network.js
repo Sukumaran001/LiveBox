@@ -26,8 +26,6 @@ window.addEventListener("offline", function (e) {
     updateConnectionStatus();
 });
 
-
-
 function netWorkChecking() {
   $('#Offline').modal('show');
 
